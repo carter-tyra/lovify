@@ -14,10 +14,13 @@
 @use './custom/view-transitions';
 
 :root {
-  --background-baseline: 18 18 18;
-  --background-highlight: 68 68 68;
-  --text-baseline: 255 255 255;
-  --text-primary: 29 185 84;
+  --background-baseline: 26 15 20;
+  --background-highlight: 62 35 47;
+  --text-baseline: 255 241 245;
+  --text-primary: 236 72 120;
+  --valentines-accent: 255 105 135;
+  --valentines-gold: 255 215 140;
+  --valentines-deep: 180 40 80;
 }
 
 body {
@@ -25,7 +28,8 @@ body {
   line-height: normal;
   font-size: 16px;
   letter-spacing: 0.015em;
-  @apply h-full w-full absolute overflow-hidden flex flex-col bg-black text-white/70;
+  @apply h-full w-full absolute overflow-hidden flex flex-col text-white/70;
+  background: linear-gradient(135deg, rgb(26 15 20) 0%, rgb(45 20 32) 50%, rgb(26 15 20) 100%);
 }
 
 a, button {

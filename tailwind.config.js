@@ -16,11 +16,14 @@ module.exports = {
       },
       colors: {
         primary: 'rgb(var(--text-primary) / <alpha-value>)',
-        sliderRail: '#535353',
-        sliderTrack: '#b3b3b3',
+        sliderRail: '#4a2535',
+        sliderTrack: '#ec4878',
         baseline: 'rgb(var(--background-baseline) / <alpha-value>)',
         white: 'rgb(var(--text-baseline) / <alpha-value>)',
         highlight: 'rgb(var(--background-highlight) / <alpha-value>)',
+        accent: 'rgb(var(--valentines-accent) / <alpha-value>)',
+        gold: 'rgb(var(--valentines-gold) / <alpha-value>)',
+        deep: 'rgb(var(--valentines-deep) / <alpha-value>)',
       }
     }
   },
