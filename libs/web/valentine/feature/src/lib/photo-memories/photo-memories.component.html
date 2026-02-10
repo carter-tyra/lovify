@@ -1,0 +1,30 @@
+<div class="memories-container">
+  <h2 class="memories-title">Our Memories</h2>
+  <p class="memories-subtitle">Every moment with you is my favorite</p>
+
+  <div class="memories-grid">
+    <div
+      class="memory-card"
+      *ngFor="let memory of memories; let i = index"
+      (click)="selectMemory(memory)"
+      [style.animation-delay]="i * 0.1 + 's'">
+      <div class="memory-image-wrapper">
+        <img [src]="memory.imageUrl" [alt]="memory.caption" class="memory-image" />
+        <div class="memory-overlay">
+          <span class="memory-view-text">View Memory</span>
+        </div>
+      </div>
+      <div class="memory-caption">{{ memory.caption }}</div>
+      <div class="memory-date">{{ memory.date }}</div>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" *ngIf="selectedMemory" (click)="closeModal()">
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button class="lightbox-close" (click)="closeModal()">&times;</button>
+    <img [src]="selectedMemory.imageUrl" [alt]="selectedMemory.caption" class="lightbox-image" />
+    <div class="lightbox-caption">{{ selectedMemory.caption }}</div>
+    <div class="lightbox-date">{{ selectedMemory.date }}</div>
+  </div>
+</div>
