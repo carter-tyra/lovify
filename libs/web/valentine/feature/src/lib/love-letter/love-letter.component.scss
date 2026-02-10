@@ -1,0 +1,119 @@
+.letter-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.letter-envelope {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+
+    .envelope-flap {
+      transform: rotateX(180deg);
+    }
+  }
+}
+
+.envelope-body {
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(135deg, #ec4878, #b42850);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(236, 72, 120, 0.3);
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(135deg, #d4376e, #ec4878);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top;
+  transition: transform 0.6s ease;
+  z-index: 1;
+}
+
+.envelope-heart {
+  z-index: 2;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.envelope-prompt {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  z-index: 2;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+.letter-paper {
+  background: linear-gradient(180deg, #fff8f0 0%, #fff1e8 100%);
+  border-radius: 8px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: unfold 0.6s ease-out;
+}
+
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: scaleY(0.3) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1) translateY(0);
+  }
+}
+
+.letter-date {
+  text-align: right;
+  color: #b42850;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.letter-greeting {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #b42850;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.letter-body {
+  color: #4a2535;
+  line-height: 1.8;
+  font-size: 1rem;
+
+  p {
+    margin-bottom: 1rem;
+    text-indent: 2rem;
+  }
+}
+
+.letter-signature {
+  margin-top: 2rem;
+  text-align: right;
+  color: #b42850;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1.6;
+}
