@@ -1,23 +1,25 @@
 .ant-slider {
   .ant-slider-rail {
-    @apply bg-sliderRail;
+    background-color: #4a2535 !important;
   }
 
   .ant-slider-track {
-    @apply bg-sliderTrack;
+    background-color: #ec4878 !important;
   }
 
   .ant-slider-handle {
     visibility: hidden;
+    border-color: #ec4878 !important;
+    background-color: #fff !important;
   }
 
   &:hover {
     .ant-slider-rail {
-      @apply bg-sliderRail;
+      background-color: #4a2535 !important;
     }
 
     .ant-slider-track {
-      @apply bg-primary;
+      background-color: #ff6987 !important;
     }
 
     .ant-slider-handle {
