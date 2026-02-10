@@ -149,7 +149,8 @@
       ],
       "@angular-spotify/web/visualizer/feature": ["libs/web/visualizer/feature/src/index.ts"],
       "@angular-spotify/web/visualizer/ui": ["libs/web/visualizer/ui/src/index.ts"],
-      "@angular-spotify/shared/view-transition": ["libs/shared/view-transition/src/index.ts"]
+      "@angular-spotify/shared/view-transition": ["libs/shared/view-transition/src/index.ts"],
+      "@angular-spotify/web/valentine/feature": ["libs/web/valentine/feature/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"],

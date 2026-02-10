@@ -1,0 +1,33 @@
+<div class="content-spacing valentine-page">
+  <div class="valentine-header">
+    <h1 class="valentine-title">For Victoria</h1>
+    <p class="valentine-subtitle">A Valentine's Day surprise, with all my love - Carter</p>
+  </div>
+
+  <nav class="valentine-nav">
+    <button
+      (click)="navigateTo('letter')"
+      [class.active]="currentSection === 'letter'"
+      class="valentine-nav-btn">
+      Love Letter
+    </button>
+    <button
+      (click)="navigateTo('photos')"
+      [class.active]="currentSection === 'photos'"
+      class="valentine-nav-btn">
+      Our Memories
+    </button>
+    <button
+      (click)="navigateTo('proposal')"
+      [class.active]="currentSection === 'proposal'"
+      class="valentine-nav-btn">
+      A Question...
+    </button>
+  </nav>
+
+  <div class="valentine-content">
+    <as-love-letter *ngIf="currentSection === 'letter'"></as-love-letter>
+    <as-photo-memories *ngIf="currentSection === 'photos'"></as-photo-memories>
+    <as-proposal *ngIf="currentSection === 'proposal'"></as-proposal>
+  </div>
+</div>

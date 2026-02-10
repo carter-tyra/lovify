@@ -1,0 +1,60 @@
+.valentine-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+}
+
+.valentine-header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.valentine-title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ec4878, #ff6987, #ffd78c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.valentine-subtitle {
+  font-size: 1.125rem;
+  color: #e8a0bf;
+  margin-top: 0.5rem;
+}
+
+.valentine-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.valentine-nav-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(236, 72, 120, 0.3);
+  background: transparent;
+  color: #e8a0bf;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(236, 72, 120, 0.15);
+    border-color: #ec4878;
+    color: #fff;
+  }
+
+  &.active {
+    background: linear-gradient(135deg, #ec4878, #ff6987);
+    border-color: transparent;
+    color: #fff;
+  }
+}
+
+.valentine-content {
+  margin-top: 1rem;
+}

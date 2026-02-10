@@ -59,6 +59,11 @@ export const webShellRoutes: Route[] = [
           (await import('@angular-spotify/web/visualizer/feature')).VisualizerModule
       },
       {
+        path: 'valentine',
+        loadChildren: async () =>
+          (await import('@angular-spotify/web/valentine/feature')).ValentineModule
+      },
+      {
         path: 'collection',
         redirectTo: 'collection/playlists',
         pathMatch: 'full'
