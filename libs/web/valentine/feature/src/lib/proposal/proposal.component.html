@@ -1,0 +1,49 @@
+<div class="proposal-container">
+  <div class="proposal-question" *ngIf="state === 'question'">
+    <div class="floating-hearts">
+      <span class="floating-heart" *ngFor="let h of [1,2,3,4,5,6,7,8]"
+            [style.animation-delay]="h * 0.5 + 's'"
+            [style.left]="h * 12 + '%'">
+      </span>
+    </div>
+    <div class="question-card">
+      <div class="question-heart">
+        <svg viewBox="0 0 24 24" fill="#ec4878" width="80" height="80">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <h1 class="question-text">Victoria...</h1>
+      <h2 class="question-subtitle">Will you be my Valentine?</h2>
+      <div class="buttons-area">
+        <button class="btn-yes" (click)="onYes()">Yes!</button>
+        <div class="no-btn-wrapper">
+          <button class="btn-no"
+            [style.position]="'relative'"
+            [style.top]="noButtonPosition.top"
+            [style.left]="noButtonPosition.left"
+            (mouseenter)="onNoHover()"
+            (touchstart)="onNoHover()">
+            {{ noMoveCount > 3 ? 'You can\'t click me!' : 'No' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="proposal-answer" *ngIf="state === 'answered'">
+    <div class="answer-card">
+      <h1 class="answer-title">She said YES!</h1>
+      <div class="answer-heart-burst">
+        <svg viewBox="0 0 24 24" fill="#ec4878" width="120" height="120">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      </div>
+      <p class="answer-message">
+        Happy Valentine's Day, Victoria!<br/>
+        I love you more every single day.<br/>
+        <span class="answer-signature">- Your husband, Carter</span>
+      </p>
+      <p class="answer-date">February 14, 2026</p>
+    </div>
+  </div>
+</div>
