@@ -45,23 +45,25 @@
     @if (currentStep === 1) {
       <div class="step step-compliments">
         <h2 class="step-heading">What I Love About You</h2>
-        <div class="compliment-cloud">
+        <div class="compliment-list">
           @for (compliment of compliments; track compliment.text; let i = $index) {
             @if (i < visibleCompliments) {
-              <span
-                class="compliment"
+              <div
+                class="compliment-row"
                 [class.size-sm]="compliment.size === 'sm'"
                 [class.size-md]="compliment.size === 'md'"
                 [class.size-lg]="compliment.size === 'lg'"
                 [class.size-xl]="compliment.size === 'xl'"
                 [class.style-italic]="compliment.style === 'italic'">
-                {{ compliment.text }}
-              </span>
+                <span class="compliment-text">{{ compliment.text }}</span>
+              </div>
             }
           }
         </div>
         @if (visibleCompliments >= compliments.length) {
-          <button class="action-btn" (click)="nextStep()">Continue</button>
+          <div class="compliments-cta">
+            <button class="action-btn" (click)="nextStep()">Continue</button>
+          </div>
         }
       </div>
     }
