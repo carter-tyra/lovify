@@ -1,0 +1,141 @@
+:host {
+  display: block;
+}
+
+// ========================================
+// Sealed envelope card
+// ========================================
+.sealed-card {
+  cursor: pointer;
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgb(var(--text-primary) / 0.08) 0%,
+    rgb(var(--background-highlight)) 40%,
+    rgb(var(--background-highlight)) 100%
+  );
+  border: 1px solid rgb(var(--text-primary) / 0.1);
+  padding: 1px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+  animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgb(var(--text-primary) / 0.25);
+
+    .sealed-icon svg {
+      transform: translateY(-2px);
+    }
+
+    .sealed-hint {
+      color: rgb(var(--text-baseline) / 0.5);
+    }
+  }
+}
+
+.sealed-inner {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.sealed-icon {
+  margin-bottom: 1.5rem;
+
+  svg {
+    color: rgb(var(--text-primary));
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.sealed-title {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: rgb(var(--text-baseline));
+  margin: 0 0 0.75rem;
+}
+
+.sealed-hint {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: rgb(var(--text-baseline) / 0.3);
+  margin: 0;
+  transition: color 0.3s;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+// ========================================
+// Open letter
+// ========================================
+.letter {
+  animation: letterReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.letter-header {
+  margin-bottom: 2rem;
+}
+
+.letter-date {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgb(var(--text-baseline) / 0.3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.letter-greeting {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: rgb(var(--text-primary));
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.letter-body {
+  p {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: rgb(var(--text-baseline) / 0.75);
+    margin: 0 0 1.25rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.letter-footer {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgb(var(--text-baseline) / 0.06);
+}
+
+.letter-closing {
+  font-size: 1rem;
+  color: rgb(var(--text-baseline) / 0.5);
+  margin: 0 0 0.375rem;
+  font-style: italic;
+}
+
+.letter-signature {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: rgb(var(--text-primary));
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+@keyframes letterReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

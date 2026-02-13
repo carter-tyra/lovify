@@ -1,0 +1,55 @@
+.proposal-container { padding: 2rem 0; min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; }
+.floating-hearts { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.floating-heart {
+  position: absolute; bottom: -20px; font-size: 1.5rem; animation: floatUp 6s ease-in infinite; opacity: 0;
+  &::before { content: '\2764'; color: rgba(236, 72, 120, 0.3); }
+}
+@keyframes floatUp {
+  0% { opacity: 0; transform: translateY(0) rotate(0deg); }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-600px) rotate(360deg); }
+}
+.question-card {
+  text-align: center; padding: 3rem; border-radius: 16px;
+  background: rgba(62, 35, 47, 0.8); backdrop-filter: blur(10px);
+  border: 1px solid rgba(236, 72, 120, 0.2); box-shadow: 0 20px 60px rgba(236, 72, 120, 0.15);
+  position: relative; z-index: 1; animation: scaleIn 0.5s ease-out;
+}
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+.question-heart { animation: heartbeat 1.2s ease-in-out infinite; margin-bottom: 1.5rem; }
+@keyframes heartbeat { 0%, 100% { transform: scale(1); } 25% { transform: scale(1.1); } 40% { transform: scale(1); } 60% { transform: scale(1.1); } }
+.question-text { font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+.question-subtitle {
+  font-size: 1.75rem; font-weight: 600;
+  background: linear-gradient(135deg, #ec4878, #ff6987, #ffd78c);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 2.5rem;
+}
+.buttons-area { display: flex; gap: 2rem; justify-content: center; align-items: center; min-height: 80px; }
+.btn-yes {
+  padding: 1rem 3rem; font-size: 1.25rem; font-weight: 700; border: none; border-radius: 9999px;
+  background: linear-gradient(135deg, #ec4878, #ff6987); color: #fff; cursor: pointer;
+  transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(236, 72, 120, 0.4);
+  &:hover { transform: scale(1.1); box-shadow: 0 6px 30px rgba(236, 72, 120, 0.6); }
+}
+.no-btn-wrapper { width: 120px; height: 60px; display: flex; align-items: center; justify-content: center; }
+.btn-no {
+  padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 9999px;
+  background: transparent; color: rgba(255, 255, 255, 0.5); cursor: pointer;
+  transition: all 0.2s ease; white-space: nowrap;
+}
+.proposal-answer { width: 100%; display: flex; justify-content: center; }
+.answer-card { text-align: center; padding: 3rem; animation: celebrationPop 0.6s ease-out; }
+@keyframes celebrationPop { 0% { opacity: 0; transform: scale(0.3); } 50% { transform: scale(1.05); } 100% { opacity: 1; transform: scale(1); } }
+.answer-title {
+  font-size: 3rem; font-weight: 700;
+  background: linear-gradient(135deg, #ec4878, #ff6987, #ffd78c);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 1.5rem;
+}
+.answer-heart-burst { animation: heartbeat 1s ease-in-out infinite; margin-bottom: 1.5rem; }
+.answer-message { font-size: 1.25rem; color: #e8a0bf; line-height: 2; }
+.answer-signature { display: block; margin-top: 1rem; font-style: italic; color: #ffd78c; font-size: 1.125rem; }
+.answer-date { margin-top: 1.5rem; color: rgba(232, 160, 191, 0.6); font-size: 0.875rem; }

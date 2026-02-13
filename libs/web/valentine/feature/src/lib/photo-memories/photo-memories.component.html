@@ -1,0 +1,33 @@
+<div class="memories-grid">
+  @for (memory of memories; track memory.imageUrl; let i = $index) {
+    <div
+      class="memory-card"
+      (click)="selectMemory(memory)"
+      [style.animation-delay]="(i * 0.08) + 's'">
+      <div class="memory-image">
+        <img [src]="memory.imageUrl" [alt]="memory.caption" />
+        <div class="memory-overlay">
+          <span class="memory-caption">{{ memory.caption }}</span>
+          <span class="memory-date">{{ memory.date }}</span>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+@if (selectedMemory) {
+  <div class="lightbox" (click)="closeModal()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button class="lightbox-close" (click)="closeModal()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <img [src]="selectedMemory.imageUrl" [alt]="selectedMemory.caption" class="lightbox-image" />
+      <div class="lightbox-info">
+        <p class="lightbox-caption">{{ selectedMemory.caption }}</p>
+        <p class="lightbox-date">{{ selectedMemory.date }}</p>
+      </div>
+    </div>
+  </div>
+}

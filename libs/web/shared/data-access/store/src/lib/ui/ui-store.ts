@@ -16,11 +16,12 @@ export class UIStore extends ComponentStore<UIState> {
     super({
       navItems: [
         { label: 'Home', path: '', exact: true, icon: 'house-door', iconSelected: 'house-door-fill' },
-        { label: 'Search', path: '/search', icon: 'search' },
+        { label: 'Our Songs', path: '/search', icon: 'search-heart' },
         { label: 'Browse', path: '/browse', icon: 'compass', iconSelected: 'compass-fill' },
-        { label: 'My Playlists', path: '/collection/playlists', icon: 'music-note-list', iconSelected: 'music-note-beamed' },
-        { label: 'My Albums', path: '/albums', icon: 'journal' },
-        { label: 'Liked songs', path: '/collection/tracks', icon: 'heart', iconSelected: 'heart-fill' }
+        { label: 'Love Playlists', path: '/collection/playlists', icon: 'heart', iconSelected: 'heart-fill' },
+        { label: 'Our Albums', path: '/albums', icon: 'journal' },
+        { label: 'Victoria\'s Favorites', path: '/collection/tracks', icon: 'heart-fill' },
+        { label: 'For Victoria', path: '/valentine', icon: 'emoji-heart-eyes' }
       ],
       isShowUnauthorizedModal: false
     });

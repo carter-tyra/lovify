@@ -210,7 +210,7 @@ export class AuthStore extends ComponentStore<AuthState> {
       return throwError(() => new Error('Code verifier not found in localStorage'));
     }
 
-    const redirectUri = `${window.location.origin}/`;
+    const redirectUri = this.spotifyAuthorize.getRedirectUri();
     const body = new URLSearchParams({
       client_id: this.spotifyAuthorize.CLIENT_ID,
       grant_type: 'authorization_code',

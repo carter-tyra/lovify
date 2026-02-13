@@ -1,7 +1,7 @@
 export class SpotifyAuthorize {
   SPOTIFY_AUTHORIZE_URL = 'https://accounts.spotify.com/authorize';
   TOKEN_URL = 'https://accounts.spotify.com/api/token';
-  CLIENT_ID = 'd06c09470bb646ebb33f27616fb151fb';
+  CLIENT_ID = 'f52e10aa2c0e420db1e496599fe51c43';
   SCOPES = [
     //Listening History
     'user-read-recently-played',
@@ -45,6 +45,11 @@ export class SpotifyAuthorize {
       .replace(/\//g, '_');
   }
 
+  getRedirectUri(): string {
+    const origin = window.location.origin.replace('localhost', '127.0.0.1');
+    return `${origin}/`;
+  }
+
   async createAuthorizeURL(): Promise<{ url: URL; codeVerifier: string }> {
     const codeVerifier = this.generateRandomString(128);
     const hash = await this.sha256(codeVerifier);
@@ -53,7 +58,7 @@ export class SpotifyAuthorize {
     const params = new URLSearchParams({
       client_id: this.CLIENT_ID,
       response_type: 'code',
-      redirect_uri: `${window.location.origin}/`,
+      redirect_uri: this.getRedirectUri(),
       scope: this.SCOPES.join(' '),
       code_challenge_method: 'S256',
       code_challenge: codeChallenge

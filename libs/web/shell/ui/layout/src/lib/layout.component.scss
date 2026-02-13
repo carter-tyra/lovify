@@ -21,3 +21,38 @@
   border-radius: 4px;
   @apply shadow-md;
 }
+
+.hearts-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart-particle {
+  position: absolute;
+  bottom: -24px;
+  animation: floatHeart 14s linear infinite;
+  color: rgb(var(--text-primary) / 0.12);
+}
+
+@keyframes floatHeart {
+  0% {
+    opacity: 0;
+    transform: translateY(0) rotate(0deg);
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-50vh) translateX(20px) rotate(15deg);
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-105vh) translateX(-15px) rotate(-10deg);
+  }
+}
