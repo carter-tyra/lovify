@@ -6,6 +6,9 @@ module.exports = {
   },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ["'Gotham'", 'sans-serif'],
+    },
     extend: {
       width: {
         navBar: '280px'

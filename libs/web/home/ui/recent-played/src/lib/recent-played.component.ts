@@ -19,10 +19,10 @@ export class RecentPlayedComponent {
 
   constructor(private store: Store, private playerApi: PlayerApiService) {}
 
-  togglePlayTrack(isPlaying: boolean, trackUri: string) {
+  togglePlayTrack(isPlaying: boolean, uri: string) {
     this.playerApi
       .togglePlay(isPlaying, {
-        uris: [trackUri]
+        context_uri: uri
       })
       .subscribe();
   }

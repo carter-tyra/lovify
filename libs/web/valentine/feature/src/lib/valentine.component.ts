@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'as-valentine',
@@ -7,9 +7,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ValentineComponent {
-  currentSection: 'letter' | 'photos' | 'proposal' = 'letter';
+  currentSection: 'letter' | 'photos' | 'wizard' = 'letter';
+  isTransitioning = false;
 
-  navigateTo(section: 'letter' | 'photos' | 'proposal') {
-    this.currentSection = section;
+  constructor(private cdr: ChangeDetectorRef) {}
+
+  navigateTo(section: 'letter' | 'photos' | 'wizard') {
+    if (section === this.currentSection || this.isTransitioning) return;
+    this.isTransitioning = true;
+    this.cdr.markForCheck();
+
+    setTimeout(() => {
+      this.currentSection = section;
+      this.isTransitioning = false;
+      this.cdr.markForCheck();
+    }, 250);
   }
 }

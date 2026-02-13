@@ -15,23 +15,43 @@ interface Memory {
 export class PhotoMemoriesComponent {
   memories: Memory[] = [
     {
-      imageUrl: 'assets/valentine/placeholder-1.jpg',
+      imageUrl: 'assets/valentine/01.jpg',
+      caption: 'Where it all began',
+      date: 'Add your date'
+    },
+    {
+      imageUrl: 'assets/valentine/02.jpg',
       caption: 'Our first adventure together',
       date: 'Add your date'
     },
     {
-      imageUrl: 'assets/valentine/placeholder-2.jpg',
+      imageUrl: 'assets/valentine/03.jpg',
+      caption: 'The moment I knew',
+      date: 'Add your date'
+    },
+    {
+      imageUrl: 'assets/valentine/04.jpg',
       caption: 'The day you said yes',
       date: 'Add your date'
     },
     {
-      imageUrl: 'assets/valentine/placeholder-3.jpg',
-      caption: 'Our wedding day - September 2024',
+      imageUrl: 'assets/valentine/05.jpg',
+      caption: 'Our wedding day',
       date: 'September 2024'
     },
     {
-      imageUrl: 'assets/valentine/placeholder-4.jpg',
-      caption: 'Our favorite moment together',
+      imageUrl: 'assets/valentine/06.jpg',
+      caption: 'Mr. & Mrs.',
+      date: 'September 2024'
+    },
+    {
+      imageUrl: 'assets/valentine/07.jpg',
+      caption: 'Building our life together',
+      date: 'Add your date'
+    },
+    {
+      imageUrl: 'assets/valentine/08.jpg',
+      caption: 'My favorite person',
       date: 'Add your date'
     },
   ];

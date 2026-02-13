@@ -4,7 +4,7 @@
       class="with-view-transition"
       type="Playlist"
       [title]="playlist.name"
-      [imageUrl]="playlist.images[0]?.url"
+      [imageUrl]="playlist.images?.[0]?.url"
       [description]="playlist.description"
       [artist]="playlist.owner.display_name"
       [trackCount]="playlist.tracks.total"

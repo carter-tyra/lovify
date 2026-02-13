@@ -1,0 +1,390 @@
+:host {
+  display: block;
+}
+
+.wizard-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// ========================================
+// Segmented progress bar (Spotify Stories)
+// ========================================
+.progress-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 2rem;
+}
+
+.progress-segment {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgb(var(--text-baseline) / 0.12);
+  transition: background 0.3s ease;
+
+  &.active {
+    background: rgb(var(--text-primary));
+  }
+
+  &.completed {
+    background: rgb(var(--text-baseline) / 0.4);
+  }
+}
+
+// ========================================
+// Step transitions
+// ========================================
+.step-content {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+
+  &.transitioning {
+    opacity: 0;
+  }
+}
+
+.step {
+  animation: stepIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes stepIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ========================================
+// Step headings
+// ========================================
+.step-heading {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: rgb(var(--text-baseline));
+  margin: 0 0 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+// ========================================
+// Action button
+// ========================================
+.action-btn {
+  display: inline-block;
+  margin: 2rem 0 0;
+  padding: 0.625rem 2rem;
+  background: rgb(var(--text-primary));
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  animation: fadeIn 0.4s ease 0.2s both;
+
+  &:hover {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// ========================================
+// Step 0: Timeline
+// ========================================
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-row {
+  display: flex;
+  gap: 1.25rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgb(var(--text-baseline) / 0.06);
+  animation: rowIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:first-child {
+    padding-top: 0;
+  }
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.timeline-year {
+  flex-shrink: 0;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: rgb(var(--text-primary));
+  min-width: 3rem;
+  padding-top: 0.125rem;
+}
+
+.timeline-detail {
+  flex: 1;
+}
+
+.timeline-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: rgb(var(--text-baseline));
+  margin: 0 0 0.25rem;
+}
+
+.timeline-desc {
+  font-size: 0.875rem;
+  color: rgb(var(--text-baseline) / 0.5);
+  margin: 0;
+  line-height: 1.5;
+}
+
+// ========================================
+// Step 1: Compliments
+// ========================================
+.compliment-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.625rem 1rem;
+  min-height: 240px;
+}
+
+.compliment {
+  color: rgb(var(--text-baseline));
+  font-weight: 600;
+  animation: wordIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &.size-sm {
+    font-size: 0.9375rem;
+    color: rgb(var(--text-baseline) / 0.5);
+  }
+
+  &.size-md {
+    font-size: 1.25rem;
+  }
+
+  &.size-lg {
+    font-size: 1.625rem;
+  }
+
+  &.size-xl {
+    font-family: 'Gotham', sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    width: 100%;
+    color: rgb(var(--text-primary));
+    margin-top: 0.75rem;
+  }
+
+  &.style-italic {
+    font-style: italic;
+  }
+}
+
+@keyframes wordIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+// ========================================
+// Step 2: Quiz
+// ========================================
+.quiz-counter {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgb(var(--text-baseline) / 0.35);
+  margin: -1rem 0 1.5rem;
+}
+
+.quiz-card {
+  background: rgb(var(--background-highlight));
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+}
+
+.quiz-question {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: rgb(var(--text-baseline));
+  margin: 0 0 1.5rem;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-option {
+  padding: 0.875rem 1rem;
+  background: rgb(var(--text-baseline) / 0.04);
+  border: 1px solid rgb(var(--text-baseline) / 0.08);
+  border-radius: 8px;
+  color: rgb(var(--text-baseline) / 0.8);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+
+  &:hover:not(:disabled) {
+    background: rgb(var(--text-baseline) / 0.08);
+    border-color: rgb(var(--text-baseline) / 0.15);
+  }
+
+  &.selected {
+    background: rgb(var(--text-primary) / 0.12);
+    border-color: rgb(var(--text-primary) / 0.4);
+    color: rgb(var(--text-baseline));
+  }
+
+  &.correct {
+    background: rgb(var(--text-primary) / 0.15);
+    border-color: rgb(var(--text-primary));
+    color: rgb(var(--text-baseline));
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.quiz-result {
+  text-align: center;
+  animation: stepIn 0.4s ease-out;
+}
+
+.quiz-result-text {
+  font-size: 1rem;
+  color: rgb(var(--text-baseline) / 0.5);
+  margin: -0.5rem 0 0;
+}
+
+// ========================================
+// Step 3: Proposal
+// ========================================
+.reveal-sequence {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.reveal-name {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: rgb(var(--text-baseline));
+  animation: nameReveal 2s ease-out;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+@keyframes nameReveal {
+  0% { opacity: 0; letter-spacing: 0.2em; }
+  100% { opacity: 1; letter-spacing: -0.02em; }
+}
+
+.proposal-card {
+  text-align: center;
+  padding: 2rem 0;
+  animation: stepIn 0.5s ease-out;
+}
+
+.heartbeat-icon {
+  color: rgb(var(--text-primary));
+  margin-bottom: 1.25rem;
+  animation: heartbeat 1.2s ease-in-out infinite;
+
+  svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.15); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.1); }
+  60% { transform: scale(1); }
+}
+
+.proposal-question {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  color: rgb(var(--text-baseline));
+  margin: 0 0 2rem;
+  letter-spacing: -0.02em;
+}
+
+.proposal-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 120px;
+}
+
+.btn-yes {
+  padding: 0.875rem 2.5rem;
+  background: rgb(var(--text-primary));
+  border: none;
+  border-radius: 9999px;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.06);
+  }
+}
+
+.btn-no {
+  padding: 0.625rem 1.25rem;
+  background: transparent;
+  border: 1px solid rgb(var(--text-baseline) / 0.15);
+  border-radius: 9999px;
+  color: rgb(var(--text-baseline) / 0.35);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: top 0.2s ease, left 0.2s ease;
+}
+
+.celebration {
+  text-align: center;
+  padding: 3rem 0;
+  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.celebration-title {
+  font-family: 'Gotham', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: rgb(var(--text-primary));
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.celebration-sub {
+  font-size: 1.125rem;
+  color: rgb(var(--text-baseline) / 0.5);
+  margin: 0;
+}

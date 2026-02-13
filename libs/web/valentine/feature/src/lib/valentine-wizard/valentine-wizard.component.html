@@ -1,0 +1,136 @@
+<div class="wizard-container">
+  <!-- Segmented progress bar -->
+  <div class="progress-bar">
+    @for (step of [0, 1, 2, 3]; track step) {
+      <div
+        class="progress-segment"
+        [class.active]="step === currentStep"
+        [class.completed]="step < currentStep">
+      </div>
+    }
+  </div>
+
+  <!-- Step content -->
+  <div class="step-content" [class.transitioning]="isTransitioning">
+
+    <!-- Step 0: Our Story Timeline -->
+    @if (currentStep === 0) {
+      <div class="step step-timeline">
+        <h2 class="step-heading">Our Story</h2>
+        <div class="timeline">
+          @for (moment of timeline; track moment.title; let i = $index) {
+            @if (i < visibleMilestones) {
+              <div class="timeline-row">
+                <span class="timeline-year">{{ moment.year }}</span>
+                <div class="timeline-detail">
+                  <p class="timeline-title">{{ moment.title }}</p>
+                  <p class="timeline-desc">{{ moment.description }}</p>
+                </div>
+              </div>
+            }
+          }
+        </div>
+        @if (visibleMilestones >= timeline.length) {
+          <button class="action-btn" (click)="nextStep()">Continue</button>
+        }
+      </div>
+    }
+
+    <!-- Step 1: Compliments -->
+    @if (currentStep === 1) {
+      <div class="step step-compliments">
+        <h2 class="step-heading">What I Love About You</h2>
+        <div class="compliment-cloud">
+          @for (compliment of compliments; track compliment.text; let i = $index) {
+            @if (i < visibleCompliments) {
+              <span
+                class="compliment"
+                [class.size-sm]="compliment.size === 'sm'"
+                [class.size-md]="compliment.size === 'md'"
+                [class.size-lg]="compliment.size === 'lg'"
+                [class.size-xl]="compliment.size === 'xl'"
+                [class.style-italic]="compliment.style === 'italic'">
+                {{ compliment.text }}
+              </span>
+            }
+          }
+        </div>
+        @if (visibleCompliments >= compliments.length) {
+          <button class="action-btn" (click)="nextStep()">Continue</button>
+        }
+      </div>
+    }
+
+    <!-- Step 2: Quiz -->
+    @if (currentStep === 2) {
+      <div class="step step-quiz">
+        @if (!quizComplete) {
+          <h2 class="step-heading">How Well Do You Know Us?</h2>
+          <p class="quiz-counter">{{ currentQuizQuestion + 1 }} / {{ quizQuestions.length }}</p>
+          <div class="quiz-card">
+            <p class="quiz-question">{{ quizQuestions[currentQuizQuestion].question }}</p>
+            <div class="quiz-options">
+              @for (option of quizQuestions[currentQuizQuestion].options; track option; let i = $index) {
+                <button
+                  class="quiz-option"
+                  [class.selected]="selectedAnswer === i"
+                  [class.correct]="selectedAnswer !== null && i === quizQuestions[currentQuizQuestion].correctIndex"
+                  [disabled]="selectedAnswer !== null"
+                  (click)="selectQuizAnswer(i)">
+                  {{ option }}
+                </button>
+              }
+            </div>
+          </div>
+        } @else {
+          <div class="quiz-result">
+            <h2 class="step-heading">You Know Us Perfectly</h2>
+            <p class="quiz-result-text">But there's one more thing I need to ask...</p>
+            <button class="action-btn" (click)="nextStep()">What is it?</button>
+          </div>
+        }
+      </div>
+    }
+
+    <!-- Step 3: The Question -->
+    @if (currentStep === 3) {
+      <div class="step step-proposal">
+        @if (proposalPhase === 'reveal') {
+          <div class="reveal-sequence">
+            <p class="reveal-name">Victoria...</p>
+          </div>
+        }
+
+        @if (proposalPhase === 'question') {
+          <div class="proposal-card">
+            <div class="heartbeat-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="40" height="40">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+            <h2 class="proposal-question">Will you be my Valentine?</h2>
+            <div class="proposal-buttons">
+              <button class="btn-yes" (click)="onYes()">Yes!</button>
+              <button
+                class="btn-no"
+                [style.position]="'relative'"
+                [style.top]="noButtonPosition.top"
+                [style.left]="noButtonPosition.left"
+                (mouseenter)="onNoHover()"
+                (touchstart)="onNoHover()">
+                {{ noButtonText }}
+              </button>
+            </div>
+          </div>
+        }
+
+        @if (proposalPhase === 'answered') {
+          <div class="celebration">
+            <h2 class="celebration-title">She Said Yes!</h2>
+            <p class="celebration-sub">Happy Valentine's Day, my love</p>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

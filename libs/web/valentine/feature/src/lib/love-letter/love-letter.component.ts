@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 
 @Component({
   selector: 'as-love-letter',
@@ -9,7 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 export class LoveLetterComponent {
   isRevealed = false;
 
+  constructor(private cdr: ChangeDetectorRef) {}
+
   revealLetter() {
     this.isRevealed = true;
+    this.cdr.markForCheck();
   }
 }

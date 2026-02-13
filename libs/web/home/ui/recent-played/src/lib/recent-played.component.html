@@ -1,4 +1,4 @@
-<h2 class="mt-8 mb-4 text-heading">Songs We've Been Loving</h2>
+<h2 class="mt-8 mb-4 text-heading">Albums We Love</h2>
 
 @if (recentTracks$ | async; as recentTracks) {
   <div
@@ -7,7 +7,7 @@
       <as-card
         [title]="historyObject.track.name"
         [description]="historyObject.track.artists[0]?.name!"
-        [imageUrl]="historyObject.track.album.images[0]?.url!"
+        [imageUrl]="historyObject.track.album.images?.[0]?.url!"
         [routerUrl]="getAlbumUrl(historyObject.track.album.id)"
         [uri]="historyObject.track.uri"
         (togglePlay)="togglePlayTrack($event, historyObject.track.uri)">

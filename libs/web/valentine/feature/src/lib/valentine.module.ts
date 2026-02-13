@@ -5,6 +5,7 @@ import { ValentineComponent } from './valentine.component';
 import { LoveLetterComponent } from './love-letter/love-letter.component';
 import { PhotoMemoriesComponent } from './photo-memories/photo-memories.component';
 import { ProposalComponent } from './proposal/proposal.component';
+import { ValentineWizardComponent } from './valentine-wizard/valentine-wizard.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ProposalComponent } from './proposal/proposal.component';
     ValentineComponent,
     LoveLetterComponent,
     PhotoMemoriesComponent,
-    ProposalComponent
+    ProposalComponent,
+    ValentineWizardComponent
   ]
 })
 export class ValentineModule {}

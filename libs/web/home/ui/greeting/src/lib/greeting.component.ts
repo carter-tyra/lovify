@@ -11,7 +11,7 @@ export class GreetingComponent {
     const now = new Date();
     const hours = now.getHours();
     const timeGreeting = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
-    return `${timeGreeting}, Victoria`;
+    return `${timeGreeting}, Dumpling 🥟 😘`;
   }
 
   get subtitle() {

@@ -1,46 +1,51 @@
-<div class="letter-container" [class.revealed]="isRevealed">
-  <div class="letter-envelope" *ngIf="!isRevealed" (click)="revealLetter()">
-    <div class="envelope-body">
-      <div class="envelope-flap"></div>
-      <div class="envelope-heart">
-        <svg viewBox="0 0 24 24" fill="#ec4878" width="48" height="48">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+@if (!isRevealed) {
+  <div class="sealed-card" (click)="revealLetter()">
+    <div class="sealed-inner">
+      <div class="sealed-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+          <path d="M21.5 12H16c-.7 2-2 3-4 3s-3.3-1-4-3H2.5" stroke-linecap="round"/>
+          <path d="M2 7l10 7 10-7M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
         </svg>
       </div>
-      <p class="envelope-prompt">Click to open</p>
+      <h2 class="sealed-title">I wrote this for you</h2>
+      <p class="sealed-hint">Tap to open</p>
     </div>
   </div>
-
-  <div class="letter-paper" *ngIf="isRevealed">
-    <div class="letter-date">February 14, 2026</div>
-    <div class="letter-greeting">My Dearest Victoria,</div>
+} @else {
+  <article class="letter">
+    <header class="letter-header">
+      <time class="letter-date">February 14, 2026</time>
+      <h2 class="letter-greeting">My Dearest Victoria,</h2>
+    </header>
     <div class="letter-body">
       <p>
-        From the moment I met you, I knew my life would never be the same. You brought color into
-        a world I didn't even know was grey. Every day with you feels like a new favorite song
-        I never want to stop playing.
+        From the moment I met you, I knew my life would never be the same.
+        You brought color into a world I didn't even know was grey. Every
+        day with you feels like a new favorite song I never want to stop
+        playing.
       </p>
       <p>
-        When we said "I do" in September 2024, I thought my heart couldn't possibly feel any fuller.
-        But you prove me wrong every single day. You are my best friend, my greatest adventure,
-        and the love of my life.
+        When we said "I do" in September 2024, I thought my heart couldn't
+        possibly feel any fuller. But you prove me wrong every single day.
+        You are my best friend, my greatest adventure, and the love of my
+        life.
       </p>
       <p>
-        I built this little app because I wanted you to know that every song reminds me of you.
-        Every melody carries a memory of us. Every beat matches the rhythm of my heart when
-        I'm with you.
+        I built this little app because I wanted you to know that every
+        song reminds me of you. Every melody carries a memory of us. Every
+        beat matches the rhythm of my heart when I'm with you.
       </p>
       <p>
-        You once said I hadn't asked you to be my Valentine yet... well, I wanted to do it
-        in a way you'd never forget.
+        You once said I hadn't asked you to be my Valentine yet&hellip;
+        well, I wanted to do it in a way you'd never forget.
       </p>
       <p>
         I love you more than words (or code) could ever express.
       </p>
     </div>
-    <div class="letter-signature">
-      Forever yours,<br/>
-      Carter
-    </div>
-  </div>
-</div>
+    <footer class="letter-footer">
+      <p class="letter-closing">Forever yours,</p>
+      <p class="letter-signature">Carter</p>
+    </footer>
+  </article>
+}

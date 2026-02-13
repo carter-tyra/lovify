@@ -59,7 +59,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
             [title]="item.album.name"
             [uri]="item.album.uri"
             [description]="item.album.artists[0].name"
-            [imageUrl]="item.album.images[0]?.url"
+            [imageUrl]="item.album.images?.[0]?.url"
             [routerUrl]="item.album.id"
             (togglePlay)="togglePlay($event, item.album.uri)"
             >
