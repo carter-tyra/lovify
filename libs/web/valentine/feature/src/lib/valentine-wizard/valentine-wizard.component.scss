@@ -148,6 +148,33 @@
   line-height: 1.5;
 }
 
+// Timeline photos
+.timeline-photo {
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: photoReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  max-width: 280px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+}
+
+@keyframes photoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 // ========================================
 // Step 1: Compliments
 // ========================================
@@ -387,4 +414,39 @@
   font-size: 1.125rem;
   color: rgb(var(--text-baseline) / 0.5);
   margin: 0;
+}
+
+// Celebration photo
+.celebration-photo {
+  margin-top: 2rem;
+  animation: celebrationPhotoIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid rgb(var(--text-primary) / 0.3);
+    box-shadow: 0 0 40px rgb(var(--text-primary) / 0.15);
+  }
+}
+
+.celebration-photo-caption {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-style: italic;
+  color: rgb(var(--text-baseline) / 0.5);
+  margin: 0.75rem 0 0;
+}
+
+@keyframes celebrationPhotoIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

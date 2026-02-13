@@ -12,6 +12,7 @@ interface TimelineMoment {
   year: string;
   title: string;
   description: string;
+  imageUrl?: string;
 }
 
 interface Compliment {
@@ -39,11 +40,11 @@ export class ValentineWizardComponent implements OnInit, OnDestroy {
 
   // Step 0: Timeline
   timeline: TimelineMoment[] = [
-    { year: '2015', title: 'The Tinder Match', description: 'Summer in Atlanta. A PwC intern from Birmingham swipes right on a girl from Augusta. Three years of Snapchat flirting, near-misses, and excuses begin.' },
+    { year: '2015', title: 'The Tinder Match', description: 'Summer in Atlanta. A PwC intern from Birmingham swipes right on a girl from Augusta. Three years of Snapchat flirting, near-misses, and excuses begin.', imageUrl: 'assets/valentine/one-of-our-first-photos-together.JPEG' },
     { year: '2018', title: 'Northside Tavern', description: 'September. Seven beers. Two tequila shots from Seth. An elevator to the 10th floor. "It\'s unlocked!!!" Fireball. The night we finally stopped making excuses.' },
     { year: '2019', title: '30 Heart Emojis', description: 'You texted "I love you" from out of the blue. I sweated for 3 hours and sent back 30 multicolored hearts. You were furious. I was terrified. We were in love.' },
-    { year: '2023', title: 'Rittenhouse Park', description: 'December. Philadelphia. One knee. One question. One ring. The most nerve-wracking and unforgettable moment of my life — and you said yes.' },
-    { year: '2024', title: 'Lecce, Puglia', description: 'September 29th. Just our families. I told myself I wouldn\'t cry. I cried like a BITCH. The most beautiful angel walked down that aisle — and she was allllll mine. Forever.' },
+    { year: '2023', title: 'Rittenhouse Park', description: 'December. Philadelphia. One knee. One question. One ring. The most nerve-wracking and unforgettable moment of my life — and you said yes.', imageUrl: 'assets/valentine/engagement-rittenhouse-park-december-2023/engagement-rittenhouse-1.JPEG' },
+    { year: '2024', title: 'Lecce, Puglia', description: 'September 29th. Just our families. I told myself I wouldn\'t cry. I cried like a BITCH. The most beautiful angel walked down that aisle — and she was allllll mine. Forever.', imageUrl: 'assets/valentine/wedding-day-puglia-september-29-2024/me-crying-during-wedding-sept-29-2024.PNG' },
     { year: '2026', title: 'And Now...', description: 'I have something to ask you' }
   ];
   visibleMilestones = 0;
