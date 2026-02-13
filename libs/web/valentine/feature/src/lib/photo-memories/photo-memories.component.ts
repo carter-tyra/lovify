@@ -106,7 +106,7 @@ export class PhotoMemoriesComponent implements AfterViewInit, OnDestroy {
     }
   ];
 
-  allPhotos: Photo[] = this.eras.flatMap(era => era.photos);
+  allPhotos: Photo[] = ([] as Photo[]).concat(...this.eras.map(era => era.photos));
   visibleEras = new Set<string>();
   lightboxIndex: number | null = null;
 
