@@ -21,14 +21,20 @@ export class GreetingComponent {
 
 function randomLoveNote(): string {
   const notes: string[] = [
-    "Every love song reminds me of you",
-    "You're the melody to my heart's song",
-    "Our love story is my favorite playlist",
-    "You make every day feel like our wedding day",
-    "Mrs. Tyra, you have my whole heart",
-    "September 2024 was just the beginning",
-    "Forever sounds like the perfect song length with you",
-    "You are my favorite duet partner for life",
+    'Still thinking about that elevator ride to the 10th floor',
+    'Mrs. Tyra, you have my whole heart — and my Venmo',
+    'September 29, 2024 was just the beginning',
+    'You poured Fireball shots and I knew you were the one',
+    'From Tinder to forever. What a playlist.',
+    '3 years of excuses, a lifetime of us',
+    'My 5-foot angel (fine... 5\'1")',
+    'I\'d drive that U-Haul 14 hours again tomorrow',
+    'Still can\'t believe I texted you instead of Seth',
+    'Puglia sunset, your white dress, me crying like a BITCH',
+    'You + me + iced matcha + doom scrolling = perfect day',
+    'Ferociously loyal. Impossibly gorgeous. Allllll mine.',
+    'Every love song reminds me of Northside Tavern',
+    '30 heart emojis wasn\'t enough. Neither is forever.',
   ];
   return notes[Math.floor(Math.random() * notes.length)];
 }

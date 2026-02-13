@@ -85,8 +85,8 @@
         } @else {
           <div class="quiz-result">
             <h2 class="step-heading">You Know Us Perfectly</h2>
-            <p class="quiz-result-text">But there's one more thing I need to ask...</p>
-            <button class="action-btn" (click)="nextStep()">What is it?</button>
+            <p class="quiz-result-text">OK but I have one more question... and it's not multiple choice this time.</p>
+            <button class="action-btn" (click)="nextStep()">What is it, Carter?</button>
           </div>
         }
       </div>
@@ -127,7 +127,10 @@
         @if (proposalPhase === 'answered') {
           <div class="celebration">
             <h2 class="celebration-title">She Said Yes!</h2>
-            <p class="celebration-sub">Happy Valentine's Day, my love</p>
+            <p class="celebration-sub">
+              From a Tinder match to forever, Mrs. Tyra.<br />
+              Happy Valentine's Day. I love you.
+            </p>
           </div>
         }
       </div>

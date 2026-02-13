@@ -39,10 +39,11 @@ export class ValentineWizardComponent implements OnInit, OnDestroy {
 
   // Step 0: Timeline
   timeline: TimelineMoment[] = [
-    { year: '20XX', title: 'The Beginning', description: 'The day our story started — replace with your date' },
-    { year: '20XX', title: 'Our First Adventure', description: 'Replace with your memory' },
-    { year: '2024', title: 'Forever Begins', description: 'Our wedding day — the best day of my life' },
-    { year: '2025', title: 'Building Our Life', description: 'Every day with you is an adventure' },
+    { year: '2015', title: 'The Tinder Match', description: 'Summer in Atlanta. A PwC intern from Birmingham swipes right on a girl from Augusta. Three years of Snapchat flirting, near-misses, and excuses begin.' },
+    { year: '2018', title: 'Northside Tavern', description: 'September. Seven beers. Two tequila shots from Seth. An elevator to the 10th floor. "It\'s unlocked!!!" Fireball. The night we finally stopped making excuses.' },
+    { year: '2019', title: '30 Heart Emojis', description: 'You texted "I love you" from out of the blue. I sweated for 3 hours and sent back 30 multicolored hearts. You were furious. I was terrified. We were in love.' },
+    { year: '2023', title: 'Rittenhouse Park', description: 'December. Philadelphia. One knee. One question. One ring. The most nerve-wracking and unforgettable moment of my life — and you said yes.' },
+    { year: '2024', title: 'Lecce, Puglia', description: 'September 29th. Just our families. I told myself I wouldn\'t cry. I cried like a BITCH. The most beautiful angel walked down that aisle — and she was allllll mine. Forever.' },
     { year: '2026', title: 'And Now...', description: 'I have something to ask you' }
   ];
   visibleMilestones = 0;
@@ -50,14 +51,17 @@ export class ValentineWizardComponent implements OnInit, OnDestroy {
 
   // Step 1: Compliments
   compliments: Compliment[] = [
-    { text: 'Your laugh', size: 'lg', style: 'italic' },
-    { text: 'The way you see the world', size: 'md', style: 'normal' },
-    { text: 'Your kindness', size: 'lg', style: 'normal' },
-    { text: 'How you make every day better', size: 'sm', style: 'italic' },
-    { text: 'Your beautiful heart', size: 'md', style: 'italic' },
-    { text: 'Your strength', size: 'md', style: 'normal' },
-    { text: 'The way you love', size: 'lg', style: 'italic' },
-    { text: 'Everything about you', size: 'xl', style: 'italic' }
+    { text: 'Ferociously loyal', size: 'lg', style: 'italic' },
+    { text: 'Drop dead gorgeous', size: 'lg', style: 'normal' },
+    { text: 'My 5-foot pocket-sized angel', size: 'md', style: 'italic' },
+    { text: 'Stronger than anyone I know', size: 'md', style: 'normal' },
+    { text: 'That infectious smile', size: 'lg', style: 'italic' },
+    { text: 'Impossibly thoughtful', size: 'md', style: 'normal' },
+    { text: 'More patient with me than she should be', size: 'sm', style: 'italic' },
+    { text: 'Hilarious (eye roll)', size: 'md', style: 'normal' },
+    { text: 'Authentically, unapologetically herself', size: 'lg', style: 'italic' },
+    { text: 'My 3AM Pedialyte angel', size: 'md', style: 'italic' },
+    { text: 'The most beautiful person I have ever seen', size: 'xl', style: 'italic' }
   ];
   visibleCompliments = 0;
   private complimentTimer: ReturnType<typeof setInterval> | null = null;
@@ -65,23 +69,54 @@ export class ValentineWizardComponent implements OnInit, OnDestroy {
   // Step 2: Quiz
   quizQuestions: QuizQuestion[] = [
     {
-      question: 'What\'s our song?',
-      options: ['Replace with option A', 'Replace with your song', 'Replace with option C'],
+      question: 'What did Carter accidentally text Victoria instead of Seth the morning after they first met?',
+      options: [
+        '"She\'s definitely an alcoholic"',
+        '"It went amazing - probably spent a million dollars"',
+        '"I think I\'m in love"',
+        '"Seth you were right, she\'s real"'
+      ],
       correctIndex: 1
     },
     {
-      question: 'Where was our first date?',
-      options: ['Replace with option A', 'Replace with option B', 'Replace with the answer'],
+      question: 'How did Carter respond when Victoria texted "I love you" while he was in Vietnam?',
+      options: [
+        'He said it back immediately',
+        'He pretended he didn\'t see it',
+        'About 30 multicolored heart emojis after 3 hours of sweating',
+        'He called her right away'
+      ],
       correctIndex: 2
     },
     {
-      question: 'What did I know from the moment I met you?',
+      question: 'What was the first thing Victoria did when Carter finally showed up at her apartment on the 10th floor?',
       options: [
-        'That you had great taste in music',
-        'That I wanted to spend forever with you',
-        'That you were trouble'
+        'Played it cool and offered him water',
+        'Gave him a big hug and poured Fireball shots',
+        'Pretended she wasn\'t home',
+        'Made him wait in the hallway'
       ],
       correctIndex: 1
+    },
+    {
+      question: 'What moment made Carter know Victoria was "the one"?',
+      options: [
+        'Their first kiss',
+        'When she said she loved him',
+        'When she drove to get Pedialyte at 3AM and nursed him back to health',
+        'When he saw her walk down the aisle'
+      ],
+      correctIndex: 2
+    },
+    {
+      question: 'How many years did Carter and Victoria talk before actually meeting in person?',
+      options: [
+        '6 months',
+        '1 year',
+        '2 years',
+        '3 years'
+      ],
+      correctIndex: 3
     }
   ];
   currentQuizQuestion = 0;
@@ -203,9 +238,10 @@ export class ValentineWizardComponent implements OnInit, OnDestroy {
   }
 
   get noButtonText(): string {
-    if (this.noMoveCount > 8) return 'Give up!';
-    if (this.noMoveCount > 5) return 'Nope!';
-    if (this.noMoveCount > 3) return 'Not happening';
+    if (this.noMoveCount > 10) return 'Just say yes, V!';
+    if (this.noMoveCount > 8) return 'I drove a U-Haul 14hrs for you!';
+    if (this.noMoveCount > 5) return 'I survived the 10th floor elevator!';
+    if (this.noMoveCount > 3) return 'I sent 30 heart emojis!';
     return 'No';
   }
 
