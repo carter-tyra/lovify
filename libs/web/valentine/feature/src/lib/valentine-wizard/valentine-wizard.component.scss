@@ -20,15 +20,16 @@
   flex: 1;
   height: 3px;
   border-radius: 2px;
-  background: rgb(var(--text-baseline) / 0.12);
-  transition: background 0.3s ease;
+  background: rgb(var(--text-baseline) / 0.15);
+  transition: background 0.4s ease;
 
   &.active {
     background: rgb(var(--text-primary));
+    box-shadow: 0 0 8px rgb(var(--text-primary) / 0.4);
   }
 
   &.completed {
-    background: rgb(var(--text-baseline) / 0.4);
+    background: rgb(var(--text-primary) / 0.5);
   }
 }
 
@@ -148,51 +149,110 @@
   line-height: 1.5;
 }
 
+// Timeline photos
+.timeline-photo {
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  overflow: hidden;
+  animation: photoReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+  max-width: 280px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+  }
+}
+
+@keyframes photoReveal {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 // ========================================
 // Step 1: Compliments
 // ========================================
-.compliment-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.625rem 1rem;
-  min-height: 240px;
+.step-compliments {
+  text-align: center;
+
+  .step-heading {
+    margin-bottom: 2.5rem;
+  }
 }
 
-.compliment {
-  color: rgb(var(--text-baseline));
-  font-weight: 600;
-  animation: wordIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+.compliment-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.compliment-row {
+  animation: complimentIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+  padding: 0.375rem 0;
+
+  .compliment-text {
+    display: inline-block;
+    color: rgb(var(--text-baseline) / 0.85);
+    font-weight: 600;
+    line-height: 1.2;
+  }
 
   &.size-sm {
-    font-size: 0.9375rem;
-    color: rgb(var(--text-baseline) / 0.5);
+    .compliment-text {
+      font-size: 0.875rem;
+      color: rgb(var(--text-baseline) / 0.35);
+      font-weight: 500;
+    }
   }
 
   &.size-md {
-    font-size: 1.25rem;
+    padding: 0.5rem 0;
+
+    .compliment-text {
+      font-size: 1.125rem;
+    }
   }
 
   &.size-lg {
-    font-size: 1.625rem;
+    padding: 0.625rem 0;
+
+    .compliment-text {
+      font-size: 1.375rem;
+      color: rgb(var(--text-baseline));
+    }
   }
 
   &.size-xl {
-    font-family: 'Gotham', sans-serif;
-    font-weight: 900;
-    font-size: 2rem;
-    width: 100%;
-    color: rgb(var(--text-primary));
-    margin-top: 0.75rem;
+    padding: 1.25rem 0 0.5rem;
+
+    .compliment-text {
+      font-family: 'Gotham', sans-serif;
+      font-weight: 900;
+      font-size: 1.75rem;
+      color: rgb(var(--text-primary));
+      letter-spacing: -0.01em;
+    }
   }
 
-  &.style-italic {
+  &.style-italic .compliment-text {
     font-style: italic;
   }
 }
 
-@keyframes wordIn {
-  from { opacity: 0; transform: translateY(8px); }
+.compliments-cta {
+  text-align: center;
+}
+
+@keyframes complimentIn {
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -387,4 +447,39 @@
   font-size: 1.125rem;
   color: rgb(var(--text-baseline) / 0.5);
   margin: 0;
+}
+
+// Celebration photo
+.celebration-photo {
+  margin-top: 2rem;
+  animation: celebrationPhotoIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+
+  img {
+    width: 100%;
+    border-radius: 12px;
+    border: 2px solid rgb(var(--text-primary) / 0.3);
+    box-shadow: 0 0 40px rgb(var(--text-primary) / 0.15);
+  }
+}
+
+.celebration-photo-caption {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-style: italic;
+  color: rgb(var(--text-baseline) / 0.5);
+  margin: 0.75rem 0 0;
+}
+
+@keyframes celebrationPhotoIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }

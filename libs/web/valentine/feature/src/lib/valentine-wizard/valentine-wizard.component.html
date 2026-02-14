@@ -20,11 +20,16 @@
         <div class="timeline">
           @for (moment of timeline; track moment.title; let i = $index) {
             @if (i < visibleMilestones) {
-              <div class="timeline-row">
+              <div class="timeline-row" [class.has-photo]="!!moment.imageUrl">
                 <span class="timeline-year">{{ moment.year }}</span>
                 <div class="timeline-detail">
                   <p class="timeline-title">{{ moment.title }}</p>
                   <p class="timeline-desc">{{ moment.description }}</p>
+                  @if (moment.imageUrl) {
+                    <div class="timeline-photo">
+                      <img [src]="moment.imageUrl" [alt]="moment.title" loading="lazy" />
+                    </div>
+                  }
                 </div>
               </div>
             }
@@ -40,23 +45,25 @@
     @if (currentStep === 1) {
       <div class="step step-compliments">
         <h2 class="step-heading">What I Love About You</h2>
-        <div class="compliment-cloud">
+        <div class="compliment-list">
           @for (compliment of compliments; track compliment.text; let i = $index) {
             @if (i < visibleCompliments) {
-              <span
-                class="compliment"
+              <div
+                class="compliment-row"
                 [class.size-sm]="compliment.size === 'sm'"
                 [class.size-md]="compliment.size === 'md'"
                 [class.size-lg]="compliment.size === 'lg'"
                 [class.size-xl]="compliment.size === 'xl'"
                 [class.style-italic]="compliment.style === 'italic'">
-                {{ compliment.text }}
-              </span>
+                <span class="compliment-text">{{ compliment.text }}</span>
+              </div>
             }
           }
         </div>
         @if (visibleCompliments >= compliments.length) {
-          <button class="action-btn" (click)="nextStep()">Continue</button>
+          <div class="compliments-cta">
+            <button class="action-btn" (click)="nextStep()">Continue</button>
+          </div>
         }
       </div>
     }
@@ -85,8 +92,8 @@
         } @else {
           <div class="quiz-result">
             <h2 class="step-heading">You Know Us Perfectly</h2>
-            <p class="quiz-result-text">But there's one more thing I need to ask...</p>
-            <button class="action-btn" (click)="nextStep()">What is it?</button>
+            <p class="quiz-result-text">OK but I have one more question... and it's not multiple choice this time.</p>
+            <button class="action-btn" (click)="nextStep()">What is it, Carter?</button>
           </div>
         }
       </div>
@@ -127,7 +134,14 @@
         @if (proposalPhase === 'answered') {
           <div class="celebration">
             <h2 class="celebration-title">She Said Yes!</h2>
-            <p class="celebration-sub">Happy Valentine's Day, my love</p>
+            <p class="celebration-sub">
+              From a Tinder match to forever, Mrs. Tyra.<br />
+              Happy Valentine's Day. I love you.
+            </p>
+            <div class="celebration-photo">
+              <img src="assets/valentine/future-family-ai-lol/future-family-01-lol.PNG" alt="Our future family" />
+              <p class="celebration-photo-caption">Our future is looking pretty good, Mrs. Tyra</p>
+            </div>
           </div>
         }
       </div>

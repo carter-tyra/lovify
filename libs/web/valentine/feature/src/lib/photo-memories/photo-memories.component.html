@@ -1,32 +1,140 @@
-<div class="memories-grid">
-  @for (memory of memories; track memory.imageUrl; let i = $index) {
-    <div
-      class="memory-card"
-      (click)="selectMemory(memory)"
-      [style.animation-delay]="(i * 0.08) + 's'">
-      <div class="memory-image">
-        <img [src]="memory.imageUrl" [alt]="memory.caption" />
-        <div class="memory-overlay">
-          <span class="memory-caption">{{ memory.caption }}</span>
-          <span class="memory-date">{{ memory.date }}</span>
-        </div>
+<div class="album">
+  @for (era of eras; track era.id) {
+    <section
+      #eraSection
+      class="era-section"
+      [class.visible]="isEraVisible(era.id)"
+      [attr.data-era-id]="era.id">
+
+      <div class="era-header">
+        <h3 class="era-title">{{ era.title }}</h3>
+        <p class="era-subtitle">{{ era.subtitle }}</p>
       </div>
-    </div>
+
+      @if (era.layout === 'hero' || era.layout === 'single') {
+        <div class="photo-hero">
+          @for (photo of era.photos; track photo.src) {
+            <div class="photo-card photo-card--hero" (click)="openLightbox(photo)">
+              <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+              <div class="photo-overlay">
+                <span class="photo-caption">{{ photo.caption }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (era.layout === 'grid-2') {
+        <div class="photo-grid photo-grid--2">
+          @for (photo of era.photos; track photo.src; let i = $index) {
+            <div
+              class="photo-card"
+              [style.animation-delay]="(i * 0.1) + 's'"
+              (click)="openLightbox(photo)">
+              <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+              <div class="photo-overlay">
+                <span class="photo-caption">{{ photo.caption }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (era.layout === 'grid-3') {
+        <div class="photo-grid photo-grid--3">
+          @for (photo of era.photos; track photo.src; let i = $index) {
+            <div
+              class="photo-card"
+              [class.photo-card--wide]="photo.span === 'wide'"
+              [style.animation-delay]="(i * 0.08) + 's'"
+              (click)="openLightbox(photo)">
+              <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+              <div class="photo-overlay">
+                <span class="photo-caption">{{ photo.caption }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+
+      @if (era.layout === 'hero-grid') {
+        <div class="photo-hero-grid">
+          @for (photo of era.photos; track photo.src; let i = $index) {
+            @if (photo.span === 'hero') {
+              <div class="photo-card photo-card--hero" (click)="openLightbox(photo)">
+                <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+                <div class="photo-overlay">
+                  <span class="photo-caption">{{ photo.caption }}</span>
+                </div>
+              </div>
+            }
+          }
+          <div class="photo-grid photo-grid--3">
+            @for (photo of era.photos; track photo.src; let i = $index) {
+              @if (photo.span !== 'hero') {
+                <div
+                  class="photo-card"
+                  [style.animation-delay]="(i * 0.08) + 's'"
+                  (click)="openLightbox(photo)">
+                  <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+                  <div class="photo-overlay">
+                    <span class="photo-caption">{{ photo.caption }}</span>
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      }
+
+      @if (era.layout === 'playful') {
+        <div class="photo-grid photo-grid--playful">
+          @for (photo of era.photos; track photo.src; let i = $index) {
+            <div
+              class="photo-card photo-card--playful"
+              [style.animation-delay]="(i * 0.12) + 's'"
+              (click)="openLightbox(photo)">
+              <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+              <div class="photo-overlay photo-overlay--playful">
+                <span class="photo-caption">{{ photo.caption }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </section>
   }
 </div>
 
-@if (selectedMemory) {
-  <div class="lightbox" (click)="closeModal()">
+@if (currentLightboxPhoto) {
+  <div class="lightbox" (click)="closeLightbox()">
     <div class="lightbox-content" (click)="$event.stopPropagation()">
-      <button class="lightbox-close" (click)="closeModal()" aria-label="Close">
+      <button class="lightbox-close" (click)="closeLightbox()" aria-label="Close">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
           <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
         </svg>
       </button>
-      <img [src]="selectedMemory.imageUrl" [alt]="selectedMemory.caption" class="lightbox-image" />
+
+      @if (lightboxIndex! > 0) {
+        <button class="lightbox-nav lightbox-nav--prev" (click)="prevPhoto()" aria-label="Previous photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      }
+      @if (lightboxIndex! < allPhotos.length - 1) {
+        <button class="lightbox-nav lightbox-nav--next" (click)="nextPhoto()" aria-label="Next photo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      }
+
+      <img [src]="currentLightboxPhoto.src" [alt]="currentLightboxPhoto.caption" class="lightbox-image" />
+
       <div class="lightbox-info">
-        <p class="lightbox-caption">{{ selectedMemory.caption }}</p>
-        <p class="lightbox-date">{{ selectedMemory.date }}</p>
+        <p class="lightbox-caption">{{ currentLightboxPhoto.caption }}</p>
+        <p class="lightbox-counter">{{ lightboxIndex! + 1 }} / {{ allPhotos.length }}</p>
       </div>
     </div>
   </div>
