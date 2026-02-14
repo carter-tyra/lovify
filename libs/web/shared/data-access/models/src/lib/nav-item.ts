@@ -4,4 +4,5 @@ export interface NavItem {
   icon?: string;
   iconSelected?: string;
   exact?: boolean;
+  queryParams?: Record<string, string>;
 }

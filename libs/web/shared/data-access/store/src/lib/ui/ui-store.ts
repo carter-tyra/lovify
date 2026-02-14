@@ -21,7 +21,16 @@ export class UIStore extends ComponentStore<UIState> {
         { label: 'Love Playlists', path: '/collection/playlists', icon: 'heart', iconSelected: 'heart-fill' },
         { label: 'Our Albums', path: '/albums', icon: 'journal' },
         { label: 'Victoria\'s Favorites', path: '/collection/tracks', icon: 'heart-fill' },
-        { label: 'For Victoria', path: '/valentine', icon: 'emoji-heart-eyes' }
+        { label: 'For Victoria', path: '/valentine', icon: 'emoji-heart-eyes' },
+        { label: '2018', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2018' } },
+        { label: '2019', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2019' } },
+        { label: '2020', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2020' } },
+        { label: '2021', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2021' } },
+        { label: '2022', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2022' } },
+        { label: '2023', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2023' } },
+        { label: '2024', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2024' } },
+        { label: '2025', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2025' } },
+        { label: '2026', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2026' } }
       ],
       isShowUnauthorizedModal: false
     });
