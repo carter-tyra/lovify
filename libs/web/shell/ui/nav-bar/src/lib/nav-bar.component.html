@@ -24,6 +24,19 @@
   }
 </ul>
 
+<!-- Valentine year links -->
+<div class="valentine-years">
+  <div class="years-divider"></div>
+  @for (year of ['2018','2019','2020','2021','2022','2023','2024','2025','2026']; track year) {
+    <a
+      [routerLink]="'/valentine'"
+      [queryParams]="{ year: year }"
+      class="year-link link-subtle">
+      {{ year }}
+    </a>
+  }
+</div>
+
 <as-nav-links />
 
 <ng-template #logoTmpl>
