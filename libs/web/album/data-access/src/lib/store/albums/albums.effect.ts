@@ -3,7 +3,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { AlbumApiService } from '@angular-spotify/web/shared/data-access/spotify-api';
 import { loadAlbums, loadAlbumsSuccess } from './albums.action';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
+import { EMPTY, forkJoin } from 'rxjs';
+
+const PINNED_ALBUM_IDS = ['4XoEC2GQnc2LVfIR7dPNFZ'];
 
 @Injectable({ providedIn: 'root' })
 export class AlbumsEffect {
@@ -11,8 +13,22 @@ export class AlbumsEffect {
     this.actions$.pipe(
       ofType(loadAlbums),
       switchMap(() =>
-        this.albumApi.getUserSavedAlbums().pipe(
-          map((albums) => loadAlbumsSuccess({ albums })),
+        forkJoin({
+          saved: this.albumApi.getUserSavedAlbums(),
+          pinned: forkJoin(PINNED_ALBUM_IDS.map(id => this.albumApi.getAlbum(id)))
+        }).pipe(
+          map(({ saved, pinned }) => {
+            const pinnedItems = pinned.map(album => ({
+              added_at: new Date().toISOString(),
+              album
+            }));
+            return loadAlbumsSuccess({
+              albums: {
+                ...saved,
+                items: [...pinnedItems, ...saved.items] as SpotifyApi.SavedAlbumObject[]
+              }
+            });
+          }),
           catchError(() => EMPTY)
         )
       )
