@@ -9,7 +9,8 @@ export const webShellRoutes: Route[] = [
     children: [
       {
         path: '',
-        loadChildren: async () => (await import('@angular-spotify/web/home/feature')).HomeModule
+        redirectTo: 'valentine',
+        pathMatch: 'full'
       },
       {
         path: 'browse',
@@ -36,8 +37,8 @@ export const webShellRoutes: Route[] = [
       },
       {
         path: `albums`,
-        loadChildren: async () =>
-          (await import('@angular-spotify/web/album/feature/shell')).AlbumShellModule
+        redirectTo: 'playlist/4XoEC2GQnc2LVfIR7dPNFZ',
+        pathMatch: 'full'
       },
       {
         path: `artist`,

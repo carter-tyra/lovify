@@ -38,8 +38,10 @@ export class PhotoMemoriesComponent implements AfterViewInit, OnDestroy {
       id: 'beginning',
       title: 'Where It All Started',
       subtitle: 'A Tinder match in the summer of 2015',
-      layout: 'hero',
+      layout: 'grid-2',
       photos: [
+        { src: 'assets/valentine/first-memories/rizz.JPEG', caption: '#didntdisappoint #worththewait', span: 'hero' },
+        { src: 'assets/valentine/first-memories/rizz02.PNG', caption: 'Peak rizz era' },
         { src: 'assets/valentine/one-of-our-first-photos-together.JPEG', caption: 'One of our first photos together' }
       ]
     },

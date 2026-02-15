@@ -1,55 +1,98 @@
-<div class="valentine-page">
-  <!-- Hero header -->
-  <header class="valentine-hero">
-    <div class="hero-accent"></div>
-    <h1 class="hero-title">For Victoria</h1>
-    <p class="hero-subtitle">From a Tinder match to forever &mdash; in music, words, and memories</p>
-    <p class="hero-from">With all my love, Carter</p>
-  </header>
+@if (yearPage) {
+  <!-- Year-specific page -->
+  <div class="valentine-page">
+    <header class="valentine-hero">
+      <div class="hero-accent"></div>
+      <p class="year-volume">{{ yearPage.subtitle }}</p>
+      <h1 class="hero-title">{{ yearPage.year }}</h1>
+      <p class="year-theme">{{ yearPage.title }}</p>
+    </header>
 
-  <!-- Navigation -->
-  <nav class="valentine-nav">
-    <button
-      class="nav-tab"
-      [class.active]="currentSection === 'letter'"
-      (click)="navigateTo('letter')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
-        <path d="M2 7l10 7 10-7M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-      </svg>
-      <span>Letter</span>
-    </button>
-    <button
-      class="nav-tab"
-      [class.active]="currentSection === 'photos'"
-      (click)="navigateTo('photos')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
-        <rect x="3" y="3" width="18" height="18" rx="2"/>
-        <circle cx="8.5" cy="8.5" r="1.5"/>
-        <path d="M21 15l-5-5L5 21"/>
-      </svg>
-      <span>Memories</span>
-    </button>
-    <button
-      class="nav-tab"
-      [class.active]="currentSection === 'wizard'"
-      (click)="navigateTo('wizard')">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-      </svg>
-      <span>Surprise</span>
-    </button>
-  </nav>
+    <div class="year-content">
+      <p class="year-description">{{ yearPage.description }}</p>
 
-  <!-- Content -->
-  <div class="valentine-content" [class.fade-out]="isTransitioning">
-    @if (currentSection === 'letter') {
-      <as-love-letter></as-love-letter>
-    }
-    @if (currentSection === 'photos') {
-      <as-photo-memories></as-photo-memories>
-    }
-    @if (currentSection === 'wizard') {
-      <as-valentine-wizard></as-valentine-wizard>
+      @if (yearPage.photos.length > 0) {
+        <div class="year-photos" [class.single]="yearPage.photos.length === 1" [class.duo]="yearPage.photos.length === 2">
+          @for (photo of yearPage.photos; track photo.src) {
+            <div class="year-photo-card" (click)="openLightbox(photo)">
+              <img [src]="photo.src" [alt]="photo.caption" loading="lazy" />
+              <span class="year-photo-caption">{{ photo.caption }}</span>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="year-empty-photos">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+          <p>Photos coming soon &mdash; this page grows every year.</p>
+        </div>
+      }
+    </div>
+
+    <!-- Lightbox -->
+    @if (lightboxPhoto) {
+      <div class="year-lightbox" (click)="closeLightbox()">
+        <img [src]="lightboxPhoto.src" [alt]="lightboxPhoto.caption" />
+        <p class="year-lightbox-caption">{{ lightboxPhoto.caption }}</p>
+      </div>
     }
   </div>
-</div>
+} @else {
+  <!-- Default valentine page -->
+  <div class="valentine-page">
+    <!-- Hero header -->
+    <header class="valentine-hero">
+      <div class="hero-accent"></div>
+      <h1 class="hero-title">For Victoria</h1>
+      <p class="hero-subtitle">From a Tinder match to forever &mdash; in music, words, and memories</p>
+      <p class="hero-from">With all my love, Carter</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="valentine-nav">
+      <button
+        class="nav-tab"
+        [class.active]="currentSection === 'letter'"
+        (click)="navigateTo('letter')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+          <path d="M2 7l10 7 10-7M4 19h16a2 2 0 002-2V7a2 2 0 00-2-2H4a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        <span>Letter</span>
+      </button>
+      <button
+        class="nav-tab"
+        [class.active]="currentSection === 'photos'"
+        (click)="navigateTo('photos')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Memories</span>
+      </button>
+      <button
+        class="nav-tab"
+        [class.active]="currentSection === 'wizard'"
+        (click)="navigateTo('wizard')">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <span>Surprise</span>
+      </button>
+    </nav>
+
+    <!-- Content -->
+    <div class="valentine-content" [class.fade-out]="isTransitioning">
+      @if (currentSection === 'letter') {
+        <as-love-letter></as-love-letter>
+      }
+      @if (currentSection === 'photos') {
+        <as-photo-memories></as-photo-memories>
+      }
+      @if (currentSection === 'wizard') {
+        <as-valentine-wizard></as-valentine-wizard>
+      }
+    </div>
+  </div>
+}

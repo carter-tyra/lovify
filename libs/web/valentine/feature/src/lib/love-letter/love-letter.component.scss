@@ -3,62 +3,86 @@
 }
 
 // ========================================
-// Sealed envelope card
+// Sealed letter card
 // ========================================
 .sealed-card {
   cursor: pointer;
-  border-radius: 16px;
-  background: linear-gradient(
-    145deg,
-    rgb(var(--text-primary) / 0.08) 0%,
-    rgb(var(--background-highlight)) 40%,
-    rgb(var(--background-highlight)) 100%
-  );
-  border: 1px solid rgb(var(--text-primary) / 0.1);
-  padding: 1px;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s;
+  border-radius: 4px;
+  background: #faf5ef;
+  border: none;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08),
+    0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
   animation: cardIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 400px;
+  margin: 0 auto;
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: rgb(var(--text-primary) / 0.25);
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 12px 40px rgba(0, 0, 0, 0.12);
 
-    .sealed-icon svg {
-      transform: translateY(-2px);
-    }
-
-    .sealed-hint {
-      color: rgb(var(--text-baseline) / 0.5);
+    .sealed-seal {
+      transform: scale(1.1);
     }
   }
 }
 
 .sealed-inner {
-  padding: 4rem 2rem;
+  padding: 4rem 3rem 3rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sealed-icon {
+.sealed-for {
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b8a08a;
+  margin: 0 0 0.25rem;
+  font-weight: 500;
+}
+
+.sealed-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 2.5rem;
+  color: #3d2e22;
+  margin: 0 0 2rem;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.sealed-seal {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #c0392b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 6px rgba(192, 57, 43, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   margin-bottom: 1.5rem;
 
   svg {
-    color: rgb(var(--text-primary));
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    color: rgba(255, 255, 255, 0.9);
   }
 }
 
-.sealed-title {
-  font-family: 'Gotham', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: rgb(var(--text-baseline));
-  margin: 0 0 0.75rem;
-}
-
 .sealed-hint {
-  font-size: 0.8125rem;
+  font-size: 0.6875rem;
   font-weight: 500;
-  color: rgb(var(--text-baseline) / 0.3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #c4b09a;
   margin: 0;
   transition: color 0.3s;
 }
