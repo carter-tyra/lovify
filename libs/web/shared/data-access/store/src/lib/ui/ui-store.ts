@@ -15,13 +15,12 @@ export class UIStore extends ComponentStore<UIState> {
   constructor(private modalService: NzModalService) {
     super({
       navItems: [
-        { label: 'Home', path: '', exact: true, icon: 'house-door', iconSelected: 'house-door-fill' },
+        { label: 'For Victoria', path: '/valentine', exact: true, icon: 'emoji-heart-eyes' },
         { label: 'Our Songs', path: '/search', icon: 'search-heart' },
         { label: 'Browse', path: '/browse', icon: 'compass', iconSelected: 'compass-fill' },
-        { label: 'Love Playlists', path: '/collection/playlists', icon: 'heart', iconSelected: 'heart-fill' },
-        { label: 'Our Albums', path: '/albums', icon: 'journal' },
+        // { label: 'Love Playlists', path: '/collection/playlists', icon: 'heart', iconSelected: 'heart-fill' },
+        { label: 'Shows together', path: '/albums', icon: 'journal' },
         { label: 'Victoria\'s Favorites', path: '/collection/tracks', icon: 'heart-fill' },
-        { label: 'For Victoria', path: '/valentine', icon: 'emoji-heart-eyes' },
         { label: '2018', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2018' } },
         { label: '2019', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2019' } },
         { label: '2020', path: '/valentine', icon: 'music-note-beamed', queryParams: { year: '2020' } },
